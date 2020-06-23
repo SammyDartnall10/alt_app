@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const FeaturesSchema = mongoose.Schema({
+const PreferencesSchema = mongoose.Schema({
   businessFeatures: {
     type: String,
     required: true,
@@ -55,4 +55,4 @@ const FeaturesSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Features", FeaturesSchema);
+module.exports = mongoose.model("Preferences", PreferencesSchema);

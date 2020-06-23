@@ -6,13 +6,14 @@ const app = express();
 // Connect Database
 connectDB();
 
-//Init middleware
+// Intit Middleware
 app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => res.json({ msg: "welcome to alt work" }));
 
 //Define our routes
-app.use("/users", require("./routes/users"));
+// app.use("/routes", require("./routes/api/users"));
+app.use("/api/users", require("./routes/api/users"));
 // app.use("/auth", require("./routes/auth"));
 // app.use("/contacts", require("./routes/contacts"));
 
