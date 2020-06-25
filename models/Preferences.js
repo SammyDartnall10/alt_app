@@ -48,7 +48,6 @@ const PreferencesSchema = mongoose.Schema({
   coffee: {
     type: String,
   },
-
   date: {
     type: Date,
     default: Date.now,

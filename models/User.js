@@ -1,11 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserSchema = mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true,
-  },
-  lastName: {
+  name: {
     type: String,
     required: true,
   },
@@ -18,11 +14,8 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  favourites: {
-    type: Array,
-  },
-  searchSettings: {
-    type: Array,
+  avatar: {
+    type: String,
   },
   date: {
     type: Date,

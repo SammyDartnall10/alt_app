@@ -6,8 +6,18 @@ const LocationSchema = mongoose.Schema({
     required: true,
   },
   businessAddress: {
-    type: Object,
-    required: true,
+    streetOne: {
+      type: String,
+    },
+    streetTwo: {
+      type: String,
+    },
+    region: {
+      type: String,
+    },
+    streetOne: {
+      type: String,
+    },
   },
   email: {
     type: String,
@@ -19,6 +29,33 @@ const LocationSchema = mongoose.Schema({
   owner: {
     type: String,
   },
+  locType: {
+    type: String,
+    required: true,
+  },
+  offers: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+      },
+      title: {
+        type: String,
+        req: true,
+      },
+      desc: {
+        type: String,
+        req: true,
+      },
+      code: {
+        type: String,
+      },
+      exp: {
+        type: Date,
+        req: true,
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now,
@@ -26,28 +63,3 @@ const LocationSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model("Location", LocationSchema);
-
-// streetOne: {
-//   type: String,
-//   required: true,
-// },
-// streetTwo: {
-//   type: String,
-//   required: true,
-// },
-// city: {
-//   type: String,
-//   required: true,
-// },
-// state: {
-//   type: String,
-//   required: true,
-// },
-// country: {
-//   type: String,
-//   required: true,
-// },
-// number: {
-//   type: String,
-//   required: true,
-// },
