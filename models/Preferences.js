@@ -3,11 +3,9 @@ const mongoose = require("mongoose");
 const PreferencesSchema = mongoose.Schema({
   businessFeatures: {
     type: String,
-    required: true,
   },
   featuresBy: {
     type: String,
-    required: true,
   },
   space: {
     type: String,

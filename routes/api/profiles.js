@@ -51,6 +51,61 @@ router.get("/", auth, async (req, res) => {
 });
 
 // Edit preferences for a profile (PUT)
+router.put("/:id", auth, async (req, res) => {
+  try {
+    // Possibly check for input with validator at some point
+
+    // Check the logged in user matches the user in the profile
+
+    //Build the object
+    const {
+      space,
+      noise,
+      plugs,
+      food,
+      time,
+      groupSize,
+      kidFriendly,
+      petFriendly,
+      privacy,
+      wifi,
+      parking,
+      storage,
+      coffee,
+    } = req.body;
+
+    console.log("Found consts");
+
+    const prefObject = {};
+    if (space) prefObject.space = space;
+    if (noise) prefObject.noise = noise;
+    if (plugs) prefObject.plugs = plugs;
+    if (food) prefObject.food = food;
+    if (time) prefObject.time = time;
+    if (groupSize) prefObject.groupSize = groupSize;
+    if (kidFriendly) prefObject.kidFriendly = kidFriendly;
+    if (petFriendly) prefObject.petFriendly = petFriendly;
+    if (privacy) prefObject.privacy = privacy;
+    if (wifi) prefObject.wifi = wifi;
+    if (parking) prefObject.parking = parking;
+    if (storage) prefObject.storage = storage;
+    if (coffee) prefObject.coffee = coffee;
+
+    // Find by Id and update
+    // Model.findByIdAndUpdate(id, { name: "jason bourne" }, options, callback);
+    const profile = await Profile.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $set: { searchSettings: prefObject } },
+      { new: true, upsert: true, useFindAndModify: false }
+    );
+
+    return res.json(profile);
+    // return the updated profile
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 //@route  GET api/profiles/:id
 //@desc   Get a profile by id - search for other users
@@ -70,6 +125,7 @@ router.get("/:id", auth, async (req, res) => {
 });
 
 // Delete profile (and user account)
+// Can do at end as a full smoke test
 
 // @route   GET api/profiles
 // @desc    Get all profiles

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+// const childPrefs = require("../models/Preferences");
+const PreferencesSchema = require("../models/Preferences").schema;
 
 const ProfileSchema = new mongoose.Schema({
   user: {
@@ -20,6 +22,7 @@ const ProfileSchema = new mongoose.Schema({
   location: {
     type: String,
   },
+  searchSettings: [PreferencesSchema],
   date: {
     type: Date,
     default: Date.now,
