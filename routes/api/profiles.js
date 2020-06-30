@@ -93,8 +93,10 @@ router.put("/:id", auth, async (req, res) => {
 
     // Find by Id and update
     // Model.findByIdAndUpdate(id, { name: "jason bourne" }, options, callback);
-    const profile = await Profile.findByIdAndUpdate(
-      { _id: req.params.id },
+    // , user: req.params.id
+    const profile = await Profile.findOneAndUpdate(
+      { _id: req.params.id, user: filter },
+      // { user: filter },
       { $set: { searchSettings: prefObject } },
       { new: true, upsert: true, useFindAndModify: false }
     );

@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
-const LocationSchema = mongoose.Schema({
+const LocationSchema = new mongoose.Schema({
+  regBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+  },
+  // Displayed Name
   businessName: {
     type: String,
     required: true,
@@ -8,15 +13,19 @@ const LocationSchema = mongoose.Schema({
   businessAddress: {
     streetOne: {
       type: String,
+      required: true,
     },
     streetTwo: {
       type: String,
+      required: true,
     },
     region: {
       type: String,
+      required: true,
     },
-    streetOne: {
+    city: {
       type: String,
+      required: true,
     },
   },
   email: {
@@ -36,8 +45,11 @@ const LocationSchema = mongoose.Schema({
   offers: [
     {
       user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "users",
+      },
+      addedBy: {
+        type: String,
       },
       title: {
         type: String,
@@ -53,6 +65,10 @@ const LocationSchema = mongoose.Schema({
       exp: {
         type: Date,
         req: true,
+      },
+      dateAdded: {
+        type: Date,
+        default: Date.now,
       },
     },
   ],
