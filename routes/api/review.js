@@ -3,6 +3,7 @@ const auth = require("../../middleware/auth");
 const Preferences = require("../../models/Preferences");
 const Location = require("../../models/Location");
 const User = require("../../models/User");
+const Review = require("../../models/Review");
 const router = express.Router();
 
 // @route   GET api/posts
@@ -17,7 +18,23 @@ router.get("/:id", (req, res) => {
 // @desc    Post a review for a location
 // @access  Private
 router.post("/:id", auth, async (req, res) => {
-  const { review, rating } = req.body;
+  const {
+    review,
+    rating,
+    space,
+    noise,
+    plugs,
+    food,
+    time,
+    groupSize,
+    kidFriendly,
+    petFriendly,
+    privacy,
+    wifi,
+    parking,
+    storage,
+    coffee,
+  } = req.body;
 
   //Look up the location being reviewed:
   const locationReviewed = await Location.findById(req.params.id);
@@ -33,9 +50,41 @@ router.post("/:id", auth, async (req, res) => {
   if (review) revObj.review = review;
   if (rating) revObj.rating = rating;
 
+  //Build the extra details (based on Pref) object
+  revObj.facilities = {};
+  if (space) revObj.facilities.space = space;
+  if (noise) revObj.facilities.noise = noise;
+  if (plugs) revObj.facilities.plugs = plugs;
+  if (food) revObj.facilities.food = food;
+  if (time) revObj.facilities.time = time;
+  if (groupSize) revObj.facilities.groupSize = groupSize;
+  if (kidFriendly) revObj.facilities.kidFriendly = kidFriendly;
+  if (petFriendly) revObj.facilities.petFriendly = petFriendly;
+  if (privacy) revObj.facilities.privacy = privacy;
+  if (wifi) revObj.facilities.wifi = wifi;
+  if (parking) revObj.facilities.parking = parking;
+  if (storage) revObj.facilities.storage = storage;
+  if (coffee) revObj.facilities.coffee = coffee;
+
   console.log(revObj);
-  return res.json(locationReviewed);
+
+  try {
+    const newReview = await new Review(revObj);
+
+    await newReview.save();
+    return res.json(newReview);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 });
+
+// // Using upsert option (creates new doc if no match is found):
+// let profile = await Profile.findOneAndUpdate(
+//   { user: req.user.id },
+//   { $set: profileFields },
+//   { new: true, upsert: true, useFindAndModify: false }
+// );
 
 // @route   GET api/
 // @desc    Get all reviews for a location
@@ -142,3 +191,20 @@ module.exports = router;
 //     default: Date.now,
 //   },
 // });
+
+// //Build the object
+// const {
+//   space,
+//   noise,
+//   plugs,
+//   food,
+//   time,
+//   groupSize,
+//   kidFriendly,
+//   petFriendly,
+//   privacy,
+//   wifi,
+//   parking,
+//   storage,
+//   coffee,
+// } = req.body;

@@ -4,7 +4,7 @@ const PreferencesSchema = require("../models/Preferences").schema;
 const ReviewSchema = mongoose.Schema({
   // the id of the locaton being reviewed - not visible
   location: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "location",
   },
   // Displayed location name
@@ -14,7 +14,7 @@ const ReviewSchema = mongoose.Schema({
   },
   //The id of the user making the review - not visible
   user: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
   // Displayed user name
@@ -34,7 +34,7 @@ const ReviewSchema = mongoose.Schema({
   likes: [
     {
       user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "users",
       },
     },
@@ -42,7 +42,7 @@ const ReviewSchema = mongoose.Schema({
   comments: [
     {
       user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "users",
       },
       text: {
