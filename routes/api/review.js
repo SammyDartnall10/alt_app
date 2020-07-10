@@ -4,6 +4,7 @@ const Preferences = require("../../models/Preferences");
 const Location = require("../../models/Location");
 const User = require("../../models/User");
 const Review = require("../../models/Review");
+const { route } = require("./auth");
 const router = express.Router();
 
 // @route   GET api/posts
@@ -79,16 +80,18 @@ router.post("/:id", auth, async (req, res) => {
   }
 });
 
-// // Using upsert option (creates new doc if no match is found):
-// let profile = await Profile.findOneAndUpdate(
-//   { user: req.user.id },
-//   { $set: profileFields },
-//   { new: true, upsert: true, useFindAndModify: false }
-// );
-
-// @route   GET api/
+// @route   GET api/:id
 // @desc    Get all reviews for a location
 // @access  Private
+router.get("/:id", async (res, rep) => {
+  try {
+    const allReviews = await Review.find({ location: req.params.id });
+    return res.json(allReviews);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 // @route   GET api/
 // @desc    Get one review for a location
