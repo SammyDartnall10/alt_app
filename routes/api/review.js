@@ -212,28 +212,142 @@ router.delete("/:id", auth, async (req, res) => {
 // @route   PUT api/review/comment/:id
 // @desc    Make a comment on a review
 // @access  Private
+// _id 5f088fa300d82e6f79d6f8e9
 
-// @route   Update api/comment/:id
-// @desc    Update a comment on a review
+router.put("/comment/:id", auth, async (req, res) => {
+  const { text } = req.body;
+
+  try {
+    const loggedUser = await User.findOne({ _id: req.user.id });
+    const review = await Review.findOne({ _id: req.params.id });
+
+    console.log(review);
+
+    const newComment = {};
+    newComment.user = req.user.id;
+    newComment.name = loggedUser.name;
+    if (text) newComment.text = text;
+
+    review.comments.unshift(newComment);
+    await review.save();
+
+    return res.json(review);
+
+    // post.comments.unshift(newComment);
+    //   await post.save();
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route   DELETE api/review/comment/:id
+// @desc    Delete a comment on a review
 // @access  Private
+router.delete("/comment/:id/:commentid", auth, async (req, res) => {
+  try {
+    //Look up the review with the commnet being deleted:
+    const reviewRecord = await Review.findById(req.params.id);
+
+    // Pull out the comment
+    const comment = reviewRecord.comments.find(
+      (comment) => comment.id === req.params.commentid
+    );
+
+    //Make sure comment exists
+    if (!comment) {
+      return res.status(404).json({ msg: "Comment not found" });
+    }
+
+    // Check user
+    if (comment.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: "User not authorised to delete" });
+    }
+
+    // Find the index of the comment
+    const removeIndex = reviewRecord.comments
+      .map((comment) => comment.user.toString())
+      .indexOf(req.user.id);
+
+    reviewRecord.comments.splice(removeIndex, 1);
+
+    await reviewRecord.save();
+
+    return res.json({ msg: "Comment removed" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 // @route   PUT api/review/likes
 // @desc    Like a review
 // @access  Private
+//id  5f088fa300d82e6f79d6f8e9
+//id  5f088d1e8ce7926ef81bca54
+router.put("/like/:id", auth, async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+
+    //Check if post has been liked by user
+    if (
+      review.likes.filter((like) => like.user.toString() === req.user.id)
+        .length > 0
+    ) {
+      return res.status(400).json({ msg: "post already liked" });
+    }
+    review.likes.unshift({ user: req.user.id });
+
+    await review.save();
+
+    return res.json(review);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error ");
+  }
+});
+
+// @route   PUT api/review/likes
+// @desc    Unlike a review
+// @access  Private
+router.put("/unlike/:id", auth, async (req, res) => {
+  try {
+    const review = await Review.findById(req.params.id);
+
+    //Check if post has been liked by user
+    if (
+      review.likes.filter((like) => like.user.toString() === req.user.id)
+        .length === 0
+    ) {
+      return res.status(400).json({ msg: "post has not yet been liked liked" });
+    }
+    // Get remove indea
+    const removeIndex = review.likes.map((like) =>
+      like.user.toString().indexOf(req.user.id)
+    );
+
+    review.likes.splice(removeIndex, 1);
+
+    await review.save();
+
+    return res.json(review);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error ");
+  }
+});
+
+module.exports = router;
+
+// Possibly TODO - can add in later
 
 // @route   PUT api/review/comment/likes
 // @desc    Like a comment
 // @access  Private
 
-// @route   PUT api/review/likes
-// @desc    Unlike a review
-// @access  Private
-
 // @route   PUT api/review/comment/likes
 // @desc    Unlike a comment
 // @access  Private
-
-module.exports = router;
 
 //  // the id of the locaton being reviewed - not visible - req.params
 //  location: {

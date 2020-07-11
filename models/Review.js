@@ -41,6 +41,7 @@ const ReviewSchema = mongoose.Schema({
   ],
   comments: [
     {
+      //The id of the user making the comment - not visible
       user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
@@ -49,6 +50,7 @@ const ReviewSchema = mongoose.Schema({
         type: String,
         required: true,
       },
+      //The display name of the user making the review
       name: {
         type: String,
       },
