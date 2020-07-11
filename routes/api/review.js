@@ -188,16 +188,26 @@ router.put("/:id", auth, async (req, res) => {
   }
 });
 
-// // Using upsert option (creates new doc if no match is found):
-// let profile = await Profile.findOneAndUpdate(
-//   { user: req.user.id },
-//   { $set: profileFields },
-//   { new: true, upsert: true, useFindAndModify: false }
-// );
-
 // @route   Delete api/review/:id
 // @ desc   Delete a Post a review for a location if the owner
 // @access  Private
+router.delete("/:id", auth, async (req, res) => {
+  //Look up the review being deleted:
+  const reviewRecord = await Review.findById(req.params.id);
+
+  try {
+    if (reviewRecord.user.toString() !== req.user.id.toString()) {
+      console.error("You are not the owner of this review");
+      res.status(500).send("You are not the owner of this review");
+    }
+    await Review.deleteOne({ _id: req.params.id });
+
+    return res.json({ msg: "Review removed" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 // @route   PUT api/review/comment/:id
 // @desc    Make a comment on a review
