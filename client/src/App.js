@@ -28,7 +28,7 @@ const App = () => {
         <Fragment>
           <Navbar />
           <Alert />
-          <Login />
+          <Register />
         </Fragment>
       </Router>
     </Provider>
