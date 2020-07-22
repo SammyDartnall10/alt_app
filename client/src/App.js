@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Landing from "./components/layout/Landing";
@@ -6,6 +6,8 @@ import Navbar from "./components/layout/Navbar";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
+import Locations from "./components/locations/Locations";
+import PrivateRoute from "./components/routing/PrivateRoute";
 import "./App.css";
 // Redux stuff
 import { Provider } from "react-redux";
@@ -19,16 +21,33 @@ if (localStorage.token) {
 }
 
 const App = () => {
-  // useEffect(() => {
-  //   store.dispatch(loadUser());
-  // }, []);
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
   return (
     <Provider store={store}>
       <Router>
         <Fragment>
           <Navbar />
-          <Alert />
-          <Register />
+          <Route exact path="/" component={Landing} />
+          <section className="container">
+            <Alert />
+            <Switch>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/alllocations" component={Locations} />
+              {/* <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfle}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              /> */}
+            </Switch>
+          </section>
         </Fragment>
       </Router>
     </Provider>
@@ -36,7 +55,3 @@ const App = () => {
 };
 
 export default App;
-
-{
-  /* <Register /> */
-}

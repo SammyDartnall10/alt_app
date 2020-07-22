@@ -5,7 +5,7 @@ import propTypes from "prop-types";
 import { login } from "../../actions/auth";
 import axios from "axios";
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,6 +25,11 @@ const Login = ({ login }) => {
 
     console.log("Submit form");
   };
+
+  // Redirect if authenticated
+  if (isAuthenticated) {
+    return <Redirect to="/alllocations" />;
+  }
 
   return (
     <Fragment>

@@ -27,10 +27,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
   };
 
-  // // Redirect if authenticated
-  // if (isAuthenticated) {
-  //   return <Redirect to="/dashboard" />;
-  // }
+  // Redirect if authenticated
+  if (isAuthenticated) {
+    return <Redirect to="/alllocations" />;
+  }
 
   return (
     <Fragment>

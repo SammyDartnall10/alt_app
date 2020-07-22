@@ -1,29 +1,59 @@
-import React from "react";
-import Button from "react-bootstrap/Button";
-import Nav from "react-bootstrap/Nav";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import propTypes from "prop-types";
+import { logout } from "../../actions/auth";
 
-const Navbar = () => {
+const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  const authLinks = (
+    <ul>
+      <li>
+        <Link to="#!">Locations</Link>
+      </li>
+      <li>
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt" />{" "}
+          <span className="hide-sm">Logout</span>
+        </a>
+      </li>
+    </ul>
+  );
+
+  const guestLinks = (
+    <ul>
+      <li>
+        <Link to="#!">Locations</Link>
+      </li>
+      <li>
+        <Link to="/register">Register</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+    </ul>
+  );
+
   return (
-    <Nav
-      activeKey="/home"
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}>
-      <Nav.Item>
-        <Nav.Link className="nav_links" href="/home">
-          Logo
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link className="nav_links" eventKey="link-1">
-          Search
-        </Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link className="nav_links" eventKey="link-2">
-          Profile
-        </Nav.Link>
-      </Nav.Item>
-    </Nav>
+    <nav className="navbar bg-dark">
+      <h1>
+        <Link to="/">
+          <i className="fas fa-code"></i> Nav
+        </Link>
+      </h1>
+      {!loading && (
+        <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+      )}
+    </nav>
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  logout: propTypes.func.isRequired,
+  auth: propTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);
