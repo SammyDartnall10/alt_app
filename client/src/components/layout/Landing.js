@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { alllocations } from "../../actions/locations";
 
 const Landing = () => {
   return (

@@ -1,10 +1,10 @@
-import { ALL_LOCATIONS, LOCATION_ERROR } from "./types";
+import { ALL_LOCATIONS, LOCATION_ERROR } from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem("token"),
-  isAuthenticated: null,
+  // token: localStorage.getItem("token"),
+  // isAuthenticated: null,
   loading: true,
-  user: null,
+  locations: null,
 };
 
 export default function (state = initialState, action) {
@@ -14,14 +14,14 @@ export default function (state = initialState, action) {
     case ALL_LOCATIONS:
       return {
         ...state,
-        isAuthenticated: true,
+        // isAuthenticated: true,
         loading: false,
         locations: payload,
       };
     case LOCATION_ERROR:
       return {
         ...state,
-        isAuthenticated: true,
+        // isAuthenticated: true,
         loading: false,
         error: payload,
       };

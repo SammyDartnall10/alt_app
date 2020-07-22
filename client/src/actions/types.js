@@ -9,6 +9,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 
 export const ALL_LOCATIONS = "ALLLOCATIONS";
+export const LOCATION_ERROR = "LOCATION_ERROR";
 
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_PROFILES = "GET_PROFILES";

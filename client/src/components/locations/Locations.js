@@ -1,7 +1,30 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
+import propTypes from "prop-types";
+import { connect } from "react-redux";
 
-const Locations = () => {
-  return <div></div>;
+import { all_locations } from "../../actions/locations";
+
+const Locations = ({ all_locations }) => {
+  useEffect(() => {
+    all_locations();
+  });
+
+  return (
+    <div>
+      <h1>All Locations</h1>
+    </div>
+  );
 };
 
-export default Locations;
+Locations.propTypes = {
+  locations: propTypes.array.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  // auth: state.auth,
+  location: state.payload,
+});
+
+export default connect(mapStateToProps, { all_locations })(Locations);
+
+// export const alllocations = () => async (dispatch) => {
