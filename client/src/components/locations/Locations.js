@@ -4,15 +4,17 @@ import { connect } from "react-redux";
 
 import { all_locations } from "../../actions/locations";
 
-const Locations = ({ all_locations }) => {
+const Locations = ({ locations, all_locations }) => {
   useEffect(() => {
     all_locations();
   });
 
   return (
-    <div>
-      <h1>All Locations</h1>
-    </div>
+    <Fragment>
+      <div>
+        <h1>All Locations</h1>
+      </div>
+    </Fragment>
   );
 };
 
@@ -22,7 +24,7 @@ Locations.propTypes = {
 
 const mapStateToProps = (state) => ({
   // auth: state.auth,
-  location: state.payload,
+  locations: state.locations,
 });
 
 export default connect(mapStateToProps, { all_locations })(Locations);
