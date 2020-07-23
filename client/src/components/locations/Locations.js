@@ -13,6 +13,7 @@ const Locations = ({ locations, all_locations }) => {
     <Fragment>
       <div>
         <h1>All Locations</h1>
+        <h4>{locations}</h4>
       </div>
     </Fragment>
   );
