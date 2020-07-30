@@ -5,7 +5,7 @@ const LocationTile = ({ loc }) => {
   return (
     <div>
       <h1>Location</h1>
-      <p>{loc.email}</p>
+      <p>{loc.businessName}</p>
     </div>
   );
 };

@@ -15,23 +15,13 @@ const Locations = ({ all_locations, location: { locations, loading } }) => {
       <div>
         <h1>All Locations</h1>
       </div>
-      {loading ? <h1>loading</h1> : <h1>not loading</h1>}
+      <div>{loading ? <h1>loading</h1> : <h1>not loading</h1>}</div>
       <div>
         {locations ? (
-          <h3>hello</h3>
+          locations.map((loc) => <LocationTile loc={loc} />)
         ) : (
-          // .map((loc, index) =>
-          // <PostItem key={post._id} post={post} />
-          <h3>no locatoins</h3>
+          <h4>No profiles found...</h4>
         )}
-
-        <div>
-          {locations ? (
-            locations.map((loc) => <LocationTile loc={loc} />)
-          ) : (
-            <h4>No profiles found...</h4>
-          )}
-        </div>
       </div>
     </Fragment>
   );
