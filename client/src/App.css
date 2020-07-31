@@ -1,5 +1,12 @@
+/* Themes:
+Yellow: #ffce00
+Purple: #ce00ff
+Green: #00ffce
+*/
+
 body {
-  background-color: floralwhite;
+  /* background-color: #ffce00; */
+  opacity: 90%;
 }
 
 a {
@@ -28,7 +35,7 @@ a:hover {
 
 .get-in {
   font-size: 2em;
-  color: rgb(0, 174, 255);
+  color: #ce00ff;
 }
 
 /* Navbar */
@@ -45,12 +52,15 @@ a:hover {
   left: 0;
   /* border-bottom: solid 1px var(--primary-color); */
   opacity: 0.9;
-  background-color: orange;
+  /* background-color: #ffce00; */
+  background-color: #00ffce;
 }
 
 .f-icon {
-  font-size: larger;
-  color: #fff;
+  font-size: 1.5rem;
+  /* color: #00ffce; */
+  /* color: #ffce00; */
+  color: #ce00ff;
 }
 
 .navbar {
