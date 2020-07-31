@@ -5,19 +5,19 @@ import { alllocations } from "../../actions/locations";
 
 const Landing = () => {
   return (
-    <div>
-      <h1>Alt Work</h1>
-      <div>
-        <h4>
-          <Link to="alllocations">Find a place to work</Link>
-        </h4>
+    <Fragment>
+      <div className="first-logo">
+        <h1 className="title-landing">ALt_</h1>
+        <h1 className="title-landing">Work</h1>
+        {/* <i class="fas fa-sign-in-alt get-in"></i> */}
       </div>
-      <div>
-        <h4>
-          <Link to="#!">Add a review</Link>
-        </h4>
+      {/* <div className="first-logo">
+        <h1 className="title-landing">A</h1>
       </div>
-    </div>
+      <div className="second-logo">
+        <h1 className="title-landing">W</h1>
+      </div> */}
+    </Fragment>
   );
 };
 
