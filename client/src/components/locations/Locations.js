@@ -13,9 +13,8 @@ const Locations = ({ all_locations, location: { locations, loading } }) => {
   return (
     <Fragment>
       <div>
-        <h1>All Locations</h1>
+        <h3>Search</h3>
       </div>
-      <div>{loading ? <h1>loading</h1> : <h1>not loading</h1>}</div>
       <div>
         {locations ? (
           locations.map((loc) => <LocationTile loc={loc} />)

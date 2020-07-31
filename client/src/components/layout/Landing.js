@@ -6,11 +6,14 @@ import { alllocations } from "../../actions/locations";
 const Landing = () => {
   return (
     <Fragment>
-      <div className="first-logo">
-        <h1 className="title-landing">ALt_</h1>
-        <h1 className="title-landing">Work</h1>
-        {/* <i class="fas fa-sign-in-alt get-in"></i> */}
-      </div>
+      <Link to="/login">
+        <div className="first-logo">
+          <h1 className="title-landing">ALt_</h1>
+          <h1 className="title-landing">Work</h1>
+          {/* <i class="fas fa-sign-in-alt get-in"></i> */}
+        </div>
+      </Link>
+
       {/* <div className="first-logo">
         <h1 className="title-landing">A</h1>
       </div>
