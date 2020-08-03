@@ -3,7 +3,7 @@ import { setAlert } from "./alert";
 import { ALL_LOCATIONS, LOCATION_ERROR } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
-//Load user
+//Get all locations
 export const all_locations = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);

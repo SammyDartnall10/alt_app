@@ -12,8 +12,8 @@ const Locations = ({ all_locations, location: { locations, loading } }) => {
 
   return (
     <Fragment>
-      <div>
-        <h3>Search</h3>
+      <div className="search_form">
+        <p>Search</p>
       </div>
       <div>
         {locations ? (
