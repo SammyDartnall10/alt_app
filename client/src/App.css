@@ -56,6 +56,15 @@ a:hover {
   background-color: #00ffce;
 }
 
+.nav_mobile ul {
+  display: flex;
+}
+
+.nav_mobile a {
+  padding: 0.9rem;
+  margin: 0 0.3rem;
+}
+
 .f-icon {
   font-size: 1.5rem;
   /* color: #00ffce; */
@@ -63,18 +72,18 @@ a:hover {
   color: #ce00ff;
 }
 
-.navbar {
+/* .navbar {
   display: flex;
   /* justify-content: space-between; */
-  align-items: right;
-  padding: 0.7rem 2rem;
-  /* position: fixed; */
-  /* z-index: 1; */
-  width: 100%;
-  top: 0;
-  /* border-bottom: solid 1px var(--primary-color); */
-  opacity: 0.9;
-}
+/* align-items: right;
+  padding: 0.7rem 2rem; */
+/* position: fixed; */
+/* z-index: 1; */
+/* width: 100%;
+  top: 0; */
+/* border-bottom: solid 1px var(--primary-color); */
+/* opacity: 0.9; */
+/* } */
 
 .navbar ul {
   display: flex;
