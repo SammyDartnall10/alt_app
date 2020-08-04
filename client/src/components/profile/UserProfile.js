@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfile } from "../../actions/profile";
-import UserInfo from "./UserInfo";
+// import UserInfo from "./UserInfo";
 
 const UserProfile = ({
   auth: { user, isAuthenticated },
@@ -17,11 +17,26 @@ const UserProfile = ({
 
   return (
     <Fragment>
-      {singleProfile && singleProfile.firstName && (
-        <h3>{singleProfile.firstName}</h3>
+      {singleProfile && (
+        <div>
+          <h3>{singleProfile.firstName}'s Profile</h3>
+
+          <h6>Title:</h6>
+          <span>{singleProfile.title}</span>
+          <h6>Industry:</h6>
+          <span>{singleProfile.industry}</span>
+          <h6>Location:</h6>
+          <span>{singleProfile.location}</span>
+        </div>
       )}
+      <button>
+        <p>Edit Details</p>
+      </button>
       <br></br>
-      <div></div>
+      <h4>Search Preferences settings</h4>
+      {singleProfile && singleProfile.searchSettings && (
+        <span>{singleProfile.searchSettings[0].space}</span>
+      )}
     </Fragment>
   );
 };
@@ -47,14 +62,3 @@ export default connect(mapStateToProps, { getProfile })(UserProfile);
 //       {/* <div>
 //         <h3>{profile.firstName}'s Profile</h3>
 //       </div> */}
-// {/* <div>
-//   <h6>Title:</h6>
-//   <span>{title}</span>
-//   <h6>Industry:</h6>
-//   <span>{industry}</span>
-//   <h6>Location:</h6>
-//   <span>{location}</span>
-//   <button>
-//     <p>Edit Details</p>
-//   </button>
-// </div> */}
