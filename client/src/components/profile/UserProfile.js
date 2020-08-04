@@ -1,11 +1,12 @@
 import React, { useEffect, Fragment } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfile } from "../../actions/profile";
 import EditDetails from "./EditDetails";
 
 const UserProfile = ({
-  auth: { user, isAuthenticated },
+  auth: { user, isAuthenticated, loading },
   profile: { singleProfile },
   getProfile,
   match,
@@ -47,9 +48,23 @@ const UserProfile = ({
           <span>{singleProfile.location}</span>
         </div>
       )}
-      <button>
-        <p>Edit Details</p>
-      </button>
+      {/* {singleProfile && singleProfile.user && (
+        <h4>Testing : {singleProfile.user}</h4>
+      )} */}
+
+      {/* Make sure user is logged in, and also the user.id and profile were on, as in the page, match */}
+      {/* {user._id === singleProfile.user ? (
+        <Link to="/edit-profile" className="btn btn-dark">
+          Edit Profile
+        </Link>
+      ) : (
+        <br></br>
+      )} */}
+
+      <Link to="/edit-profile" className="btn btn-dark">
+        Edit Profile
+      </Link>
+
       <br></br>
       <h4>Search Preferences settings:</h4>
       {singleProfile && singleProfile.searchSettings[0].space && (
@@ -142,10 +157,9 @@ const UserProfile = ({
           <span>{singleProfile.searchSettings[0].coffee}</span>
         </div>
       )}
-
-      <button>
-        <p>Edit Search Preferences</p>
-      </button>
+      <Link to="/edit-preferences" className="btn btn-dark">
+        Edit Search Preferences
+      </Link>
     </Fragment>
   );
 };

@@ -26,3 +26,15 @@ export const getProfile = (id) => async (dispatch) => {
     });
   }
 };
+
+export const createUpdateDetails = () => async (dispatch) => {
+  try {
+    // set the headers and content to send
+    // make a put request to the url -
+  } catch (err) {
+    console.log("Didnt work");
+    dispatch({
+      type: PROFILE_ERROR,
+    });
+  }
+};

@@ -50,6 +50,20 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
+// router.put("/:id", auth, async (req, res) =>{
+//   try{
+//     const {
+//       firstName,
+//       lastName,
+
+//     } = req.body;
+
+//   }catch(err){
+//     console.error(err.message);
+//     res.status(500).send("Server Error");
+//   }
+// })
+
 // Edit preferences for a profile (PUT)
 router.put("/:id", auth, async (req, res) => {
   try {

@@ -13,6 +13,7 @@ import Alert from "./components/layout/Alert";
 import Locations from "./components/locations/Locations";
 import Profile from "./components/profile/Profile";
 import UserProfile from "./components/profile/UserProfile";
+import EditDetails from "./components/profile/EditDetails";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import "./App.css";
 // Redux stuff
@@ -45,6 +46,11 @@ const App = () => {
               <PrivateRoute exact path="/alllocations" component={Locations} />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/me" component={UserProfile} />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditDetails}
+              />
             </Switch>
           </section>
         </Fragment>
