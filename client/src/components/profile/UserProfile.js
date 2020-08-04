@@ -2,7 +2,7 @@ import React, { useEffect, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfile } from "../../actions/profile";
-// import UserInfo from "./UserInfo";
+import EditDetails from "./EditDetails";
 
 const UserProfile = ({
   auth: { user, isAuthenticated },
@@ -12,8 +12,26 @@ const UserProfile = ({
 }) => {
   useEffect(() => {
     getProfile(user._id);
-    //dependecy for that error
+    //dependecy for that error where it keeps calling the same function
   }, [getProfile]);
+
+  let preferencesOptions = [
+    "businessFeatures",
+    "featuresBy",
+    "space",
+    "noise",
+    "plugs",
+    "food",
+    "time",
+    "groupSize",
+    "kidFriendly",
+    "petFriendly",
+    "privacy",
+    "wifi",
+    "parking",
+    "storage",
+    "coffee",
+  ];
 
   return (
     <Fragment>
@@ -33,10 +51,101 @@ const UserProfile = ({
         <p>Edit Details</p>
       </button>
       <br></br>
-      <h4>Search Preferences settings</h4>
-      {singleProfile && singleProfile.searchSettings && (
-        <span>{singleProfile.searchSettings[0].space}</span>
+      <h4>Search Preferences settings:</h4>
+      {singleProfile && singleProfile.searchSettings[0].space && (
+        <div>
+          <span>Space: </span>
+          <span>{singleProfile.searchSettings[0].space}</span>
+        </div>
       )}
+
+      {singleProfile && singleProfile.searchSettings[0].noise && (
+        <div>
+          <span>Noise: </span>
+          <span>{singleProfile.searchSettings[0].noise}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].plugs && (
+        <div>
+          <span>Plugs: </span>
+          <span>{singleProfile.searchSettings[0].plugs}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].food && (
+        <div>
+          <span>Food: </span>
+          <span>{singleProfile.searchSettings[0].food}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].time && (
+        <div>
+          <span>Time: </span>
+          <span>{singleProfile.searchSettings[0].time}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].groupSize && (
+        <div>
+          <span>Group Size: </span>
+          <span>{singleProfile.searchSettings[0].groupSize}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].kidFriendly && (
+        <div>
+          <span>Kid Friendly: </span>
+          <span>{singleProfile.searchSettings[0].kidFriendly}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].petFriendly && (
+        <div>
+          <span>Pet Friendly: </span>
+          <span>{singleProfile.searchSettings[0].petFriendly}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].privacy && (
+        <div>
+          <span>Privacy: </span>
+          <span>{singleProfile.searchSettings[0].privacy}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].wifi && (
+        <div>
+          <span>Wifi: </span>
+          <span>{singleProfile.searchSettings[0].wifi}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].parking && (
+        <div>
+          <span>Parking: </span>
+          <span>{singleProfile.searchSettings[0].parking}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].storage && (
+        <div>
+          <span>Storage: </span>
+          <span>{singleProfile.searchSettings[0].storage}</span>
+        </div>
+      )}
+
+      {singleProfile && singleProfile.searchSettings[0].coffee && (
+        <div>
+          <span>Coffee: </span>
+          <span>{singleProfile.searchSettings[0].coffee}</span>
+        </div>
+      )}
+
+      <button>
+        <p>Edit Search Preferences</p>
+      </button>
     </Fragment>
   );
 };
@@ -46,19 +155,8 @@ UserProfile.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  // isAuthenticated: state.auth.isAuthenticated,
   auth: state.auth,
   profile: state.profile,
 });
 
-// const mapStateToProps = (state) => ({
-//   // auth: state.auth,
-//   location: state.location,
-// });
-
 export default connect(mapStateToProps, { getProfile })(UserProfile);
-
-// {/* <h4>{singleProfile._id}</h4> */}
-//       {/* <div>
-//         <h3>{profile.firstName}'s Profile</h3>
-//       </div> */}
