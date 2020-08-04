@@ -29,7 +29,7 @@ const MobileNav = ({ auth: { isAuthenticated, loading }, logout }) => {
         </Link>
       </li>
       <li>
-        <Link to="/search">
+        <Link to="/alllocations">
           <i className="fas fa-search f-icon" />
         </Link>
       </li>

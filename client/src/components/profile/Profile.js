@@ -3,15 +3,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import { logout } from "../../actions/auth";
+// import UserProfile from './UserProfile'
 
-const Profile = ({ auth: { user }, logout }) => {
+const Profile = ({ auth: { user }, match, logout }) => {
   return (
     <Fragment>
       <div>
         <h4>Welcome {user.name}</h4>
       </div>
       <div>
-        <Link to="/profile/me">
+        <Link to="/me">
           <i className="fas fa-plus-square f-icon" />
           <span>Show Profile</span>
         </Link>
