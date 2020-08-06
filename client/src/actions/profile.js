@@ -27,12 +27,25 @@ export const getProfile = (id) => async (dispatch) => {
   }
 };
 
-export const createUpdateDetails = () => async (dispatch) => {
+export const createUpdateDetails = (formData) => async (dispatch) => {
+  console.log(formData);
   try {
     // set the headers and content to send
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
     // make a put request to the url -
+    const res = await axios.post("/api/profiles", formData, config);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
   } catch (err) {
-    console.log("Didnt work");
+    console.log("Didnt update");
     dispatch({
       type: PROFILE_ERROR,
     });

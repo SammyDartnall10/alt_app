@@ -1,9 +1,14 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
-import { createUpdateDetails } from "../../actions/profile";
+import { createUpdateDetails, getProfile } from "../../actions/profile";
 
-const EditDetails = ({ setAlert, createUpdateDetails, isAuthenticated }) => {
+const EditDetails = ({
+  createUpdateDetails,
+  auth: { isAuthenticated },
+  getProfile,
+  profile: { singleProfile },
+}) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -11,6 +16,16 @@ const EditDetails = ({ setAlert, createUpdateDetails, isAuthenticated }) => {
     title: "",
     industry: "",
   });
+
+  useEffect(() => {
+    getProfile();
+
+    setFormData({
+      firstName: !singleProfile.firstName ? "" : singleProfile.firstName,
+      lastName: !singleProfile.lastName ? "" : singleProfile.lastName,
+      location: !singleProfile.location ? "" : singleProfile.location,
+    });
+  }, [getProfile]);
 
   // // Build profile object
   // const profileFields = {};
@@ -30,6 +45,12 @@ const EditDetails = ({ setAlert, createUpdateDetails, isAuthenticated }) => {
     e.preventDefault();
     createUpdateDetails({ firstName, lastName, location, title, industry });
   };
+
+  if (!singleProfile) {
+    // or !this.props.user.profile depending on your initialState
+    // https://stackoverflow.com/questions/50862192/react-typeerror-cannot-read-property-props-of-undefined
+    return null;
+  }
 
   return (
     <Fragment>
@@ -94,16 +115,14 @@ const EditDetails = ({ setAlert, createUpdateDetails, isAuthenticated }) => {
   );
 };
 
-EditDetails.propTypes = {
-  setAlert: propTypes.func.isRequired,
-  register: propTypes.func.isRequired,
-  isAuthenticated: propTypes.bool,
-};
+EditDetails.propTypes = {};
 
 const mapStateToProps = (state) => ({
   alerts: state.alert,
-  isAuthenticated: state.auth.isAuthenticated,
-  profile: state.profile.singleProfile,
+  auth: state.auth,
+  profile: state.profile,
 });
 
-export default connect(mapStateToProps, { createUpdateDetails })(EditDetails);
+export default connect(mapStateToProps, { createUpdateDetails, getProfile })(
+  EditDetails
+);
