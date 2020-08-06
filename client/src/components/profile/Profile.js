@@ -20,8 +20,8 @@ const Profile = ({ auth: { user }, match, logout }) => {
       <div>
         <span>Account Settings</span>
         <ul>
-          <li>Personal Information</li>
-          <li>Search Preferences</li>
+          <li>Update Personal Information</li>
+          <li>Update Search Preferences</li>
           <li>Notifications</li>
         </ul>
       </div>

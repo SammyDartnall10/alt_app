@@ -14,6 +14,7 @@ import Locations from "./components/locations/Locations";
 import Profile from "./components/profile/Profile";
 import UserProfile from "./components/profile/UserProfile";
 import EditDetails from "./components/profile/EditDetails";
+import EditPreferences from "./components/profile/EditPreferences";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import "./App.css";
 // Redux stuff
@@ -50,6 +51,11 @@ const App = () => {
                 exact
                 path="/edit-profile"
                 component={EditDetails}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-preferences"
+                component={EditPreferences}
               />
             </Switch>
           </section>

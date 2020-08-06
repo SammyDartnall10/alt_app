@@ -51,3 +51,30 @@ export const createUpdateDetails = (formData) => async (dispatch) => {
     });
   }
 };
+
+export const createUpdatePrefs = (formData, id) => async (dispatch) => {
+  console.log("Called Update");
+  console.log(formData);
+
+  try {
+    // set the headers and content to send
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    // make a put request to the url -
+    const res = await axios.put(`/api/profiles/${id}`, formData, config);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log("Didnt update");
+    dispatch({
+      type: PROFILE_ERROR,
+    });
+  }
+};

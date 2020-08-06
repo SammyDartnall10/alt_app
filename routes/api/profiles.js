@@ -65,6 +65,8 @@ router.get("/", auth, async (req, res) => {
 // })
 
 // Edit preferences for a profile (PUT)
+// 5efa82ddae5e83799dac8066 user feild in profile object
+
 router.put("/:id", auth, async (req, res) => {
   try {
     // Possibly check for input with validator at some point

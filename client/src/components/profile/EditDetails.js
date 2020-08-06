@@ -24,6 +24,8 @@ const EditDetails = ({
       firstName: !singleProfile.firstName ? "" : singleProfile.firstName,
       lastName: !singleProfile.lastName ? "" : singleProfile.lastName,
       location: !singleProfile.location ? "" : singleProfile.location,
+      title: !singleProfile.title ? "" : singleProfile.title,
+      industry: !singleProfile.industry ? "" : singleProfile.industry,
     });
   }, [getProfile]);
 
@@ -102,7 +104,7 @@ const EditDetails = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="industry"
+            placeholder="Industry"
             name="industry"
             value={industry}
             onChange={(e) => onChange(e)}
