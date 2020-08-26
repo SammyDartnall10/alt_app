@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const Profile = require("../../models/Profile");
+const Preferences = require("../../models/Preferences")
 
 // @route   POST api/profiles
 // @desc    Create or Update a profile
@@ -92,7 +93,7 @@ router.put("/:id", auth, async (req, res) => {
 
     console.log("Found consts");
 
-    const prefObject = {};
+    let prefObject = {};
     if (space) prefObject.space = space;
     if (noise) prefObject.noise = noise;
     if (plugs) prefObject.plugs = plugs;
@@ -110,15 +111,46 @@ router.put("/:id", auth, async (req, res) => {
     // Find by Id and update
     // Model.findByIdAndUpdate(id, { name: "jason bourne" }, options, callback);
     // , user: req.params.id
-    const profile = await Profile.findOneAndUpdate(
-      { _id: req.params.id, user: filter },
-      // { user: filter },
-      { $set: { searchSettings: prefObject } },
-      { new: true, upsert: true, useFindAndModify: false }
-    );
+    // Comment from here
+    // const profile = await Profile.findOneAndUpdate(
+    //   { user: req.params.id },
+    //   // { user: filter },
+    //   {
+    //     // $pop: { searchSettings: -1 }
+    //     $set: { searchSettings: prefObject }
+    //   },
+    //   { new: true, upsert: true, useFindAndModify: false }
+    // );
+
+    // return res.json(profile);
+    // return the updated profile
+    // To here
+
+    console.log(prefObject)
+    const profile = await Profile.findOne({ user: req.params.id })
+    const settingsId = profile.searchSettings._id
+    profile.searchSettings = prefObject
+
+    const updated = await profile.save()
+
+
+    // console.log("Found settings:")
+    // console.log(profile.searchSettings)
+    // if (profile.searchSettings) {
+    //   console.log("found something")
+    //   profile.searchSettings = {}
+    // }
+    // profile.searchSettings.pop()
+    // profile.searchSettings.unshift(prefObject)
+    // profile = await Profile.findOneAndUpdate(
+    //   { user: req.params.id },
+    //   { $set: { "profile.$.searchSettings": prefObject } },
+    //   { new: true, upsert: true, useFindAndModify: false }
+
+    // )
 
     return res.json(profile);
-    // return the updated profile
+
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

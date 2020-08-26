@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createUpdatePrefs, getProfile } from "../../actions/profile";
 
 const EditPreferences = ({
-  createUpdateDetails,
+  createUpdatePrefs,
   auth: { isAuthenticated },
   getProfile,
   profile: { singleProfile },
@@ -161,6 +161,106 @@ const EditPreferences = ({
             onChange={(e) => onChange(e)}
           />
         </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Plugs"
+            name="plugs"
+            value={plugs}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Food"
+            name="food"
+            value={food}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Time"
+            name="time"
+            value={time}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Group Size"
+            name="groupSize"
+            value={groupSize}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Kid Friendly"
+            name="kidFriendly"
+            value={kidFriendly}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Pet Friendly"
+            name="petFriendly"
+            value={petFriendly}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Privacy"
+            name="privacy"
+            value={privacy}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Wifi"
+            name="wifi"
+            value={wifi}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Parking"
+            name="parking"
+            value={parking}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Storage"
+            name="storage"
+            value={storage}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Coffee"
+            name="coffee"
+            value={coffee}
+            onChange={(e) => onChange(e)}
+          />
+        </div>
+
 
         <input type="submit" className="btn btn-primary" value="EditDetails" />
       </form>

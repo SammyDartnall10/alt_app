@@ -27,30 +27,38 @@ export const getProfile = (id) => async (dispatch) => {
   }
 };
 
-export const createUpdateDetails = (formData) => async (dispatch) => {
-  console.log(formData);
-  try {
-    // set the headers and content to send
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+export const createUpdateDetails = (formData, history,
+  edit = false) => async (dispatch) => {
+    console.log(formData);
+    try {
+      // set the headers and content to send
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-    // make a put request to the url -
-    const res = await axios.post("/api/profiles", formData, config);
+      // make a post request to the url -
+      const res = await axios.post("/api/profiles", formData, config);
 
-    dispatch({
-      type: GET_PROFILE,
-      payload: res.data,
-    });
-  } catch (err) {
-    console.log("Didnt update");
-    dispatch({
-      type: PROFILE_ERROR,
-    });
-  }
-};
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data,
+      });
+
+      dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
+
+
+      if (!edit) {
+        history.push('/me');
+      }
+    } catch (err) {
+      console.log("Didnt update");
+      dispatch({
+        type: PROFILE_ERROR,
+      });
+    }
+  };
 
 export const createUpdatePrefs = (formData, id) => async (dispatch) => {
   console.log("Called Update");

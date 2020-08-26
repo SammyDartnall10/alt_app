@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { Link, withRouter } from 'react-router-dom';
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 import { createUpdateDetails, getProfile } from "../../actions/profile";
@@ -8,6 +9,7 @@ const EditDetails = ({
   auth: { isAuthenticated },
   getProfile,
   profile: { singleProfile },
+  history
 }) => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -45,7 +47,7 @@ const EditDetails = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    createUpdateDetails({ firstName, lastName, location, title, industry });
+    createUpdateDetails(formData, history, true);
   };
 
   if (!singleProfile) {
@@ -68,7 +70,7 @@ const EditDetails = ({
             name="firstName"
             value={firstName}
             onChange={(e) => onChange(e)}
-            // required
+          // required
           />
         </div>
         <div className="form-group">
@@ -78,7 +80,7 @@ const EditDetails = ({
             name="lastName"
             value={lastName}
             onChange={(e) => onChange(e)}
-            // required
+          // required
           />
         </div>
         <div className="form-group">
@@ -88,7 +90,7 @@ const EditDetails = ({
             name="location"
             value={location}
             onChange={(e) => onChange(e)}
-            // required
+          // required
           />
         </div>
         <div className="form-group">
@@ -98,7 +100,7 @@ const EditDetails = ({
             name="title"
             value={title}
             onChange={(e) => onChange(e)}
-            // required
+          // required
           />
         </div>
         <div className="form-group">
@@ -108,11 +110,14 @@ const EditDetails = ({
             name="industry"
             value={industry}
             onChange={(e) => onChange(e)}
-            // required
+          // required
           />
         </div>
         <input type="submit" className="btn btn-primary" value="EditDetails" />
       </form>
+      <Link className='btn btn-light my-1' to='/profile'>
+        Go Back
+        </Link>
     </Fragment>
   );
 };
@@ -125,6 +130,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, { createUpdateDetails, getProfile })(
-  EditDetails
-);
+export default connect(mapStateToProps, { createUpdateDetails, getProfile })
+  (withRouter(EditDetails)
+  );

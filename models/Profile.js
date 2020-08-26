@@ -22,7 +22,10 @@ const ProfileSchema = new mongoose.Schema({
   location: {
     type: String,
   },
-  searchSettings: [PreferencesSchema],
+  searchSettings: {
+    type: PreferencesSchema,
+    default: {}
+  },
   date: {
     type: Date,
     default: Date.now,

@@ -1,11 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import propTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import { getProfile } from "../../actions/profile";
+
 // import UserProfile from './UserProfile'
 
-const Profile = ({ auth: { user }, match, logout }) => {
+const Profile = ({ auth: { user }, match, logout, getProfile }) => {
+  useEffect(() => {
+    getProfile()
+  });
+
+
   return (
     <Fragment>
       <div>
@@ -20,7 +27,10 @@ const Profile = ({ auth: { user }, match, logout }) => {
       <div>
         <span>Account Settings</span>
         <ul>
-          <li>Update Personal Information</li>
+
+          <li><Link to="/edit-profile" className="btn btn-dark">
+            Update Personal Information
+      </Link></li>
           <li>Update Search Preferences</li>
           <li>Notifications</li>
         </ul>
@@ -48,4 +58,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logout })(Profile);
+export default connect(mapStateToProps, { logout, getProfile })(Profile);
