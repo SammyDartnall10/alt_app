@@ -19,8 +19,9 @@ const ProfileSchema = new mongoose.Schema({
   industry: {
     type: String,
   },
-  location: {
-    type: String,
+  favourites: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "locations",
   },
   searchSettings: {
     type: PreferencesSchema,
