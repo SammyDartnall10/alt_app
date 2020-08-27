@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect } from "react";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
-import LocationTile from "./LocationTile";
+
+import placeholder from "../../assets/images/placeholder.jpg";
 
 import { getLocation } from "../../actions/locations";
 
@@ -11,16 +12,35 @@ const SingleLocation = ({ getLocation, location: { location, loading }, match })
     getLocation(match.params.id)
   }, [getLocation])
 
+
+
   if (!location) {
     // or !this.props.user.profile depending on your initialState
     // https://stackoverflow.com/questions/50862192/react-typeerror-cannot-read-property-props-of-undefined
     return null;
   }
+
+  const topTile = (
+    <div className="row">
+      <div>
+        <h4>{location.businessName}</h4>
+        <div><img className="placeholder-img" src={placeholder}></img></div>
+        <strong>{location.businessAddress.streetOne}</strong>
+        <p>{location.businessAddress.streetTwo}</p>
+        <p>{location.businessAddress.region}</p>
+        <p>{location.businessAddress.city}</p>
+        <strong>Rating: 4.5</strong>
+      </div>
+    </div>
+  )
   return (
     <Fragment>
 
       <div> {(location) ?
-        (<h4>{location.businessName}</h4>) : (
+        (<h4>{topTile}</h4>
+
+
+        ) : (
           <h4>No profiles found...</h4>
         )}
       </div>

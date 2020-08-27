@@ -14,6 +14,10 @@ a {
   color: black;
 }
 
+.placeholder-img{
+  max-height: 10vh;
+}
+
 a:hover {
   text-decoration: none;
   color: pink;
