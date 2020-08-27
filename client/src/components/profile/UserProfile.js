@@ -34,6 +34,12 @@ const UserProfile = ({
     "coffee",
   ];
 
+  if (!singleProfile) {
+    // or !this.props.user.profile depending on your initialState
+    // https://stackoverflow.com/questions/50862192/react-typeerror-cannot-read-property-props-of-undefined
+    return null;
+  }
+
   return (
     <Fragment>
       {singleProfile && (
@@ -67,94 +73,94 @@ const UserProfile = ({
 
       <br></br>
       <h4>Search Preferences settings:</h4>
-      {singleProfile && singleProfile.searchSettings[0].space && (
+      {singleProfile && singleProfile.searchSettings.space && (
         <div>
           <span>Space: </span>
-          <span>{singleProfile.searchSettings[0].space}</span>
+          <span>{singleProfile.searchSettings.space}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].noise && (
+      {singleProfile && singleProfile.searchSettings.noise && (
         <div>
           <span>Noise: </span>
-          <span>{singleProfile.searchSettings[0].noise}</span>
+          <span>{singleProfile.searchSettings.noise}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].plugs && (
+      {singleProfile && singleProfile.searchSettings.plugs && (
         <div>
           <span>Plugs: </span>
-          <span>{singleProfile.searchSettings[0].plugs}</span>
+          <span>{singleProfile.searchSettings.plugs}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].food && (
+      {singleProfile && singleProfile.searchSettings.food && (
         <div>
           <span>Food: </span>
-          <span>{singleProfile.searchSettings[0].food}</span>
+          <span>{singleProfile.searchSettings.food}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].time && (
+      {singleProfile && singleProfile.searchSettings.time && (
         <div>
           <span>Time: </span>
-          <span>{singleProfile.searchSettings[0].time}</span>
+          <span>{singleProfile.searchSettings.time}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].groupSize && (
+      {singleProfile && singleProfile.searchSettings.groupSize && (
         <div>
           <span>Group Size: </span>
-          <span>{singleProfile.searchSettings[0].groupSize}</span>
+          <span>{singleProfile.searchSettings.groupSize}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].kidFriendly && (
+      {singleProfile && singleProfile.searchSettings.kidFriendly && (
         <div>
           <span>Kid Friendly: </span>
-          <span>{singleProfile.searchSettings[0].kidFriendly}</span>
+          <span>{singleProfile.searchSettings.kidFriendly}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].petFriendly && (
+      {singleProfile && singleProfile.searchSettings.petFriendly && (
         <div>
           <span>Pet Friendly: </span>
-          <span>{singleProfile.searchSettings[0].petFriendly}</span>
+          <span>{singleProfile.searchSettings.petFriendly}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].privacy && (
+      {singleProfile && singleProfile.searchSettings.privacy && (
         <div>
           <span>Privacy: </span>
-          <span>{singleProfile.searchSettings[0].privacy}</span>
+          <span>{singleProfile.searchSettings.privacy}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].wifi && (
+      {singleProfile && singleProfile.searchSettings.wifi && (
         <div>
           <span>Wifi: </span>
-          <span>{singleProfile.searchSettings[0].wifi}</span>
+          <span>{singleProfile.searchSettings.wifi}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].parking && (
+      {singleProfile && singleProfile.searchSettings.parking && (
         <div>
           <span>Parking: </span>
-          <span>{singleProfile.searchSettings[0].parking}</span>
+          <span>{singleProfile.searchSettings.parking}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].storage && (
+      {singleProfile && singleProfile.searchSettings.storage && (
         <div>
           <span>Storage: </span>
-          <span>{singleProfile.searchSettings[0].storage}</span>
+          <span>{singleProfile.searchSettings.storage}</span>
         </div>
       )}
 
-      {singleProfile && singleProfile.searchSettings[0].coffee && (
+      {singleProfile && singleProfile.searchSettings.coffee && (
         <div>
           <span>Coffee: </span>
-          <span>{singleProfile.searchSettings[0].coffee}</span>
+          <span>{singleProfile.searchSettings.coffee}</span>
         </div>
       )}
       <Link to="/edit-preferences" className="btn btn-dark">

@@ -47,45 +47,45 @@ const EditPreferences = ({
     getProfile();
 
     setFormData({
-      space: !singleProfile.searchSettings[0].space
+      space: !singleProfile.searchSettings.space
         ? ""
-        : singleProfile.searchSettings[0].space,
-      noise: !singleProfile.searchSettings[0].noise
+        : singleProfile.searchSettings.space,
+      noise: !singleProfile.searchSettings.noise
         ? ""
-        : singleProfile.searchSettings[0].noise,
-      plugs: !singleProfile.searchSettings[0].plugs
+        : singleProfile.searchSettings.noise,
+      plugs: !singleProfile.searchSettings.plugs
         ? ""
-        : singleProfile.searchSettings[0].plugs,
-      food: !singleProfile.searchSettings[0].food
+        : singleProfile.searchSettings.plugs,
+      food: !singleProfile.searchSettings.food
         ? ""
-        : singleProfile.searchSettings[0].food,
-      time: !singleProfile.searchSettings[0].time
+        : singleProfile.searchSettings.food,
+      time: !singleProfile.searchSettings.time
         ? ""
-        : singleProfile.searchSettings[0].time,
-      groupSize: !singleProfile.searchSettings[0].groupSize
+        : singleProfile.searchSettings.time,
+      groupSize: !singleProfile.searchSettings.groupSize
         ? ""
-        : singleProfile.searchSettings[0].groupSize,
-      kidFriendly: !singleProfile.searchSettings[0].kidFriendly
+        : singleProfile.searchSettings.groupSize,
+      kidFriendly: !singleProfile.searchSettings.kidFriendly
         ? ""
-        : singleProfile.searchSettings[0].kidFriendly,
-      petFriendly: !singleProfile.searchSettings[0].petFriendly
+        : singleProfile.searchSettings.kidFriendly,
+      petFriendly: !singleProfile.searchSettings.petFriendly
         ? ""
-        : singleProfile.searchSettings[0].petFriendly,
-      privacy: !singleProfile.searchSettings[0].privacy
+        : singleProfile.searchSettings.petFriendly,
+      privacy: !singleProfile.searchSettings.privacy
         ? ""
-        : singleProfile.searchSettings[0].privacy,
-      wifi: !singleProfile.searchSettings[0].wifi
+        : singleProfile.searchSettings.privacy,
+      wifi: !singleProfile.searchSettings.wifi
         ? ""
-        : singleProfile.searchSettings[0].wifi,
-      parking: !singleProfile.searchSettings[0].parking
+        : singleProfile.searchSettings.wifi,
+      parking: !singleProfile.searchSettings.parking
         ? ""
-        : singleProfile.searchSettings[0].parking,
-      storage: !singleProfile.searchSettings[0].storage
+        : singleProfile.searchSettings.parking,
+      storage: !singleProfile.searchSettings.storage
         ? ""
-        : singleProfile.searchSettings[0].storage,
-      coffee: !singleProfile.searchSettings[0].coffee
+        : singleProfile.searchSettings.storage,
+      coffee: !singleProfile.searchSettings.coffee
         ? ""
-        : singleProfile.searchSettings[0].coffee,
+        : singleProfile.searchSettings.coffee,
     });
   }, [getProfile]);
 
