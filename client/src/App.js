@@ -15,6 +15,7 @@ import Profile from "./components/profile/Profile";
 import UserProfile from "./components/profile/UserProfile";
 import EditDetails from "./components/profile/EditDetails";
 import EditPreferences from "./components/profile/EditPreferences";
+import SingleLocation from "./components/locations/SingleLocation"
 import PrivateRoute from "./components/routing/PrivateRoute";
 import "./App.css";
 // Redux stuff
@@ -45,6 +46,7 @@ const App = () => {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/alllocations" component={Locations} />
+              <PrivateRoute exact path="/location/:id" component={SingleLocation} />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/me" component={UserProfile} />
               <PrivateRoute

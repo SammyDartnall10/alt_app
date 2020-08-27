@@ -1,5 +1,6 @@
-import React, { Link, Fragment } from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 import Card from "react-bootstrap/Card";
 import placeholder from "../../assets/images/placeholder.jpg";
 
@@ -21,10 +22,13 @@ const LocationTile = ({ loc }) => {
             <strong>
               <p>{loc.businessAddress.city}</p>
             </strong>
+            <Link to={"/location/" + loc._id}>See more</Link>
           </Card.Text>
         </Card.Body>
       </Card>
+
       <br></br>
+
     </Fragment>
   );
 };

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { setAlert } from "./alert";
-import { ALL_LOCATIONS, LOCATION_ERROR } from "./types";
+import { ALL_LOCATIONS, LOCATION_ERROR, GET_LOCATION, SINGLELOC_ERROR } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
 //Get all locations
@@ -8,11 +8,9 @@ export const all_locations = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
-  console.log("clled route");
 
   try {
     const res = await axios.get("/api/location");
-    console.log("Got locations");
     console.log(res.data);
 
     dispatch({
@@ -20,9 +18,23 @@ export const all_locations = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log("Didnt work");
     dispatch({
       type: LOCATION_ERROR,
     });
   }
 };
+
+export const getLocation = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/location/${id}`)
+    dispatch({
+      type: GET_LOCATION,
+      payload: res.data
+    })
+
+  } catch (err) {
+    dispatch({
+      type: SINGLELOC_ERROR,
+    });
+  }
+}

@@ -1,4 +1,4 @@
-import { ALL_LOCATIONS, LOCATION_ERROR } from "../actions/types";
+import { ALL_LOCATIONS, LOCATION_ERROR, GET_LOCATION, SINGLELOC_ERROR } from "../actions/types";
 
 const initialState = {
   location: null,
@@ -15,7 +15,13 @@ export default function (state = initialState, action) {
         loading: false,
         locations: payload,
       };
+    case GET_LOCATION:
+      return {
+        ...state,
+        location: payload,
+      };
     case LOCATION_ERROR:
+    case SINGLELOC_ERROR:
       return {
         ...state,
         locations: [],
