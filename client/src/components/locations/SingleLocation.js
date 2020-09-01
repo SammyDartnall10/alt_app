@@ -21,23 +21,42 @@ const SingleLocation = ({ getLocation, location: { location, loading }, match })
   }
 
   const topTile = (
-    <div className="row">
-      <div>
-        <h4>{location.businessName}</h4>
-        <div><img className="placeholder-img" src={placeholder}></img></div>
-        <strong>{location.businessAddress.streetOne}</strong>
-        <p>{location.businessAddress.streetTwo}</p>
-        <p>{location.businessAddress.region}</p>
-        <p>{location.businessAddress.city}</p>
-        <strong>Rating: 4.5</strong>
+    <div>
+      <div className="row">
+        <div className="col">
+          <h4>{location.businessName}</h4>
+          <div><img className="placeholder-img" src={placeholder}></img></div>
+          <strong>{location.businessAddress.streetOne}</strong>
+          <p>{location.businessAddress.streetTwo}</p>
+          <p>{location.businessAddress.region}</p>
+          <p>{location.businessAddress.city}</p>
+          <strong>Rating: 4.5</strong>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <button>Add Review</button>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <button>Add Review</button>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+          <p>Offers:</p>
+
+        </div>
       </div>
     </div>
+
   )
   return (
     <Fragment>
 
       <div> {(location) ?
-        (<h4>{topTile}</h4>
+        (<div>{topTile}</div>
 
 
         ) : (
