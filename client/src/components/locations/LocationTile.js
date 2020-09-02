@@ -16,11 +16,9 @@ const LocationTile = ({ loc }) => {
         <Card.Body>
           <Card.Title>{loc.businessName}</Card.Title>
           <Card.Text>
-            {/* <p>{loc.businessAddress.streetOne}</p>
-            <p>{loc.businessAddress.streetTwo}</p>
-            <p>{loc.businessAddress.region}</p> */}
+
             <strong>
-              <p>{loc.businessAddress.city}</p>
+              {loc.businessAddress.city}
             </strong>
             <Link to={"/location/" + loc._id}>See more</Link>
           </Card.Text>
@@ -36,3 +34,8 @@ const LocationTile = ({ loc }) => {
 LocationTile.propTypes = {};
 
 export default LocationTile;
+
+
+// {/* <p>{loc.businessAddress.streetOne}</p>
+//             <p>{loc.businessAddress.streetTwo}</p>
+//             <p>{loc.businessAddress.region}</p> */}

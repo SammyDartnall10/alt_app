@@ -17,8 +17,8 @@ export default function (state = initialState, action) {
     case SINGLE_REVIEW:
       return {
         ...state,
-        review: payload
-      }
+        review: payload,
+      };
     case REVIEW_ERROR:
       return {
         ...state,

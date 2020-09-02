@@ -101,6 +101,7 @@ router.get("/:id", auth, async (req, res) => {
 // @desc    Get one review for a location
 // @access  Private
 router.get("/view/:id", auth, async (req, res) => {
+  console.log("Getting one review")
   try {
     let review = await Review.find({ _id: req.params.id });
     return res.json(review);

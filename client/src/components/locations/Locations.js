@@ -17,10 +17,10 @@ const Locations = ({ all_locations, location: { locations, loading } }) => {
       </div>
       <div>
         {locations ? (
-          locations.map((loc) => <LocationTile loc={loc} />)
+          locations.map((loc, index) => <LocationTile loc={loc} key={index} />)
         ) : (
-          <h4>No profiles found...</h4>
-        )}
+            <h4>No profiles found...</h4>
+          )}
       </div>
     </Fragment>
   );

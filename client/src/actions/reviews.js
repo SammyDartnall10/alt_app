@@ -20,6 +20,10 @@ export const allReviews = (id) => async (dispatch) => {
 }
 
 export const singleReview = (id) => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+
   try {
     const res = await axios.get(`/api/review/view/${id}`)
     dispatch({

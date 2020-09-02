@@ -47,8 +47,8 @@ const SingleLocation = ({ getLocation, allReviews, location: { location }, revie
         )}
 
         {(reviews)?(
-          reviews.map(review=>
-            <ReviewSummary review={review}></ReviewSummary>
+          reviews.map((review, index)=>
+            <ReviewSummary review={review} key={index}></ReviewSummary>
           )
         ): (
           <h4>Nobody's left a review yet!...</h4>

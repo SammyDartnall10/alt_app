@@ -1,14 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
-import { allReviews } from "../../actions/reviews"
+
 
 
 const ReviewSummary = ({ review }) => {
 
-  // useEffect(() => {
-  //   allReviews(location._id)
-  // }, [allReviews])
+
 
   return (
     <Fragment>
@@ -16,14 +14,13 @@ const ReviewSummary = ({ review }) => {
 
         <h4>{review.rating}</h4>
         <strong>{review.review}</strong>
-        <Link to={"review/" + review._id}><button> See More </button></Link>
+        <Link to={"review/view/" + review._id} review={review}>See More</Link>
 
       </div>
     </Fragment>
   );
 };
 
-// "/location/" + loc._id}
 
 ReviewSummary.propTypes = {};
 
