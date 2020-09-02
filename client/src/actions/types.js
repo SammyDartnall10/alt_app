@@ -13,6 +13,9 @@ export const LOCATION_ERROR = "LOCATION_ERROR";
 export const GET_LOCATION = "GET_LOCATION"
 export const SINGLELOC_ERROR = "SINGLELOC_ERROR"
 
+export const ALL_REVIEWS = "ALL_REVIEWS"
+export const REVIEW_ERROR = "REVIEW_ERROR"
+
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_PROFILES = "GET_PROFILES";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";

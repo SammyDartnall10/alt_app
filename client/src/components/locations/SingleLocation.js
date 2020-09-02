@@ -6,13 +6,17 @@ import TopTile from "./TopTile"
 import PreferencesDisplay from "../layout/PreferencesDisplay"
 
 import { getLocation } from "../../actions/locations";
+import { allReviews } from "../../actions/reviews"
 
-const SingleLocation = ({ getLocation, location: { location, loading }, match }) => {
+const SingleLocation = ({ getLocation, allReviews, location: { location }, reviews: { reviews }, match }) => {
 
   useEffect(() => {
     getLocation(match.params.id)
   }, [getLocation])
 
+  useEffect(() => {
+    allReviews(match.params.id)
+  }, [allReviews])
 
 
   if (!location) {
@@ -20,6 +24,8 @@ const SingleLocation = ({ getLocation, location: { location, loading }, match })
     // https://stackoverflow.com/questions/50862192/react-typeerror-cannot-read-property-props-of-undefined
     return null;
   }
+
+
 
 
   return (
@@ -34,15 +40,29 @@ const SingleLocation = ({ getLocation, location: { location, loading }, match })
               <button>Add Review</button>
             </div>
           </div>
-          <ReviewSummary></ReviewSummary>
+          
         </div>
         ) : (
           <h4>No profiles found...</h4>
+        )}
+
+        {(reviews)?(
+          reviews.map(review=>
+            <ReviewSummary review={review}></ReviewSummary>
+          )
+        ): (
+          <h4>Nobody's left a review yet!...</h4>
         )}
       </div>
     </Fragment>
   );
 };
+
+
+// {locations ? (
+//   locations.map((loc) => <LocationTile loc={loc} />)
+// )
+
 
 SingleLocation.propTypes = {
 
@@ -51,6 +71,7 @@ SingleLocation.propTypes = {
 const mapStateToProps = (state) => ({
   // auth: state.auth,
   location: state.location,
+  reviews: state.reviews
 });
 
-export default connect(mapStateToProps, { getLocation })(SingleLocation);
+export default connect(mapStateToProps, { getLocation, allReviews })(SingleLocation);
