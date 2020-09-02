@@ -1,4 +1,4 @@
-import { ALL_REVIEWS, REVIEW_ERROR } from "../actions/types";
+import { ALL_REVIEWS, REVIEW_ERROR, SINGLE_REVIEW } from "../actions/types";
 
 const initialState = {
   review: null,
@@ -14,6 +14,11 @@ export default function (state = initialState, action) {
         ...state,
         reviews: payload,
       };
+    case SINGLE_REVIEW:
+      return {
+        ...state,
+        review: payload
+      }
     case REVIEW_ERROR:
       return {
         ...state,

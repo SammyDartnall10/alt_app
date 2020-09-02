@@ -15,6 +15,7 @@ export const SINGLELOC_ERROR = "SINGLELOC_ERROR"
 
 export const ALL_REVIEWS = "ALL_REVIEWS"
 export const REVIEW_ERROR = "REVIEW_ERROR"
+export const SINGLE_REVIEW = "SINGLE_REVIEW"
 
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_PROFILES = "GET_PROFILES";

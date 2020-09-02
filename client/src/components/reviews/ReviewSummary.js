@@ -16,11 +16,14 @@ const ReviewSummary = ({ review }) => {
 
         <h4>{review.rating}</h4>
         <strong>{review.review}</strong>
-        <button> See More </button>
+        <Link to={"review/" + review._id}><button> See More </button></Link>
+
       </div>
     </Fragment>
   );
 };
+
+// "/location/" + loc._id}
 
 ReviewSummary.propTypes = {};
 
