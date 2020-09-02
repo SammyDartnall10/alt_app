@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import propTypes from "prop-types";
 import { connect } from "react-redux";
-
-import placeholder from "../../assets/images/placeholder.jpg";
+import ReviewSummary from "../reviews/ReviewSummary"
+import TopTile from "./TopTile"
+import PreferencesDisplay from "../layout/PreferencesDisplay"
 
 import { getLocation } from "../../actions/locations";
 
@@ -20,45 +21,21 @@ const SingleLocation = ({ getLocation, location: { location, loading }, match })
     return null;
   }
 
-  const topTile = (
-    <div>
-      <div className="row">
-        <div className="col">
-          <h4>{location.businessName}</h4>
-          <div><img className="placeholder-img" src={placeholder}></img></div>
-          <strong>{location.businessAddress.streetOne}</strong>
-          <p>{location.businessAddress.streetTwo}</p>
-          <p>{location.businessAddress.region}</p>
-          <p>{location.businessAddress.city}</p>
-          <strong>Rating: 4.5</strong>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <button>Add Review</button>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <button>Add Review</button>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <p>Offers:</p>
 
-        </div>
-      </div>
-    </div>
-
-  )
   return (
     <Fragment>
 
       <div> {(location) ?
-        (<div>{topTile}</div>
-
-
+        (<div>
+          <TopTile location={location}></TopTile>
+          {/* <PreferencesDisplay prefs={location}></PreferencesDisplay> */}
+          <div className="row">
+            <div className="col">
+              <button>Add Review</button>
+            </div>
+          </div>
+          <ReviewSummary></ReviewSummary>
+        </div>
         ) : (
           <h4>No profiles found...</h4>
         )}

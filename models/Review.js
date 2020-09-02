@@ -30,7 +30,10 @@ const ReviewSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  facilities: [PreferencesSchema],
+  searchSettings: {
+    type: PreferencesSchema,
+    default: {}
+  },
   likes: [
     {
       user: {

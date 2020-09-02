@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfile } from "../../actions/profile";
 import EditDetails from "./EditDetails";
+import PreferencesDisplay from "../layout/PreferencesDisplay"
 
 const UserProfile = ({
   auth: { user, isAuthenticated, loading },
@@ -73,96 +74,8 @@ const UserProfile = ({
 
       <br></br>
       <h4>Search Preferences settings:</h4>
-      {singleProfile && singleProfile.searchSettings.space && (
-        <div>
-          <span>Space: </span>
-          <span>{singleProfile.searchSettings.space}</span>
-        </div>
-      )}
 
-      {singleProfile && singleProfile.searchSettings.noise && (
-        <div>
-          <span>Noise: </span>
-          <span>{singleProfile.searchSettings.noise}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.plugs && (
-        <div>
-          <span>Plugs: </span>
-          <span>{singleProfile.searchSettings.plugs}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.food && (
-        <div>
-          <span>Food: </span>
-          <span>{singleProfile.searchSettings.food}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.time && (
-        <div>
-          <span>Time: </span>
-          <span>{singleProfile.searchSettings.time}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.groupSize && (
-        <div>
-          <span>Group Size: </span>
-          <span>{singleProfile.searchSettings.groupSize}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.kidFriendly && (
-        <div>
-          <span>Kid Friendly: </span>
-          <span>{singleProfile.searchSettings.kidFriendly}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.petFriendly && (
-        <div>
-          <span>Pet Friendly: </span>
-          <span>{singleProfile.searchSettings.petFriendly}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.privacy && (
-        <div>
-          <span>Privacy: </span>
-          <span>{singleProfile.searchSettings.privacy}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.wifi && (
-        <div>
-          <span>Wifi: </span>
-          <span>{singleProfile.searchSettings.wifi}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.parking && (
-        <div>
-          <span>Parking: </span>
-          <span>{singleProfile.searchSettings.parking}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.storage && (
-        <div>
-          <span>Storage: </span>
-          <span>{singleProfile.searchSettings.storage}</span>
-        </div>
-      )}
-
-      {singleProfile && singleProfile.searchSettings.coffee && (
-        <div>
-          <span>Coffee: </span>
-          <span>{singleProfile.searchSettings.coffee}</span>
-        </div>
-      )}
+      <PreferencesDisplay prefs={singleProfile}></PreferencesDisplay>
       <Link to="/edit-preferences" className="btn btn-dark">
         Edit Search Preferences
       </Link>

@@ -18,6 +18,14 @@ a {
   max-height: 10vh;
 }
 
+.tile-border{
+  
+  border: #ce00ff;;
+  
+  border-width: 1px;
+  border-style: solid;
+}
+
 a:hover {
   text-decoration: none;
   color: pink;
