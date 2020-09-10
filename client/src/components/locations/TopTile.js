@@ -16,7 +16,7 @@ const TopTile = ({ location }) => {
             <p>{location.businessAddress.streetTwo}</p>
             <p>{location.businessAddress.region}</p>
             <p>{location.businessAddress.city}</p>
-            <strong>Rating: 4.5</strong>
+            {/* <strong>Rating: 4.5</strong> */}
           </div>
         </div>
 

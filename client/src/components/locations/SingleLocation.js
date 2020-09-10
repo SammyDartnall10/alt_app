@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import propTypes from "prop-types";
 import { connect } from "react-redux";
 import ReviewSummary from "../reviews/ReviewSummary"
@@ -37,7 +38,9 @@ const SingleLocation = ({ getLocation, allReviews, location: { location }, revie
           {/* <PreferencesDisplay prefs={location}></PreferencesDisplay> */}
           <div className="row">
             <div className="col">
+              <Link to={"/review/add/"+location._id} loc={location}>
               <button>Add Review</button>
+              </Link>
             </div>
           </div>
           
