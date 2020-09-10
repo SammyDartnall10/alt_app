@@ -1,27 +1,36 @@
 import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux";
-import { singleReview } from "../../actions/reviews"
+import { getReview } from "../../actions/reviews"
 
 
 // const SingleLocation = ({ getLocation, reviews: { reviews }, match }) => {
 
-const SingleReview = ({ singleReview, review: { review }, match }) => {
+const SingleReview = ({ getReview, review: { review }, match }) => {
 
   useEffect(() => {
-    singleReview(match.params.id)
-  }, [singleReview])
+    getReview(match.params.id)
+  }, [getReview])
 
   if (!review) {
 
-    return null;
+    return (
+      <div>
+        No review to show
+      </div>
+    )
   }
 
   return (
     <Fragment>
       <div>
         <h1>Test single review</h1>
-        {/* <h1>{review.review}</h1> */}
+        <h1>{review[0].businessName}</h1>
+        <span>{review[0].review}</span>
+        <strong><span>{review[0].rating}</span></strong>
+        <h3>Reviewed by:</h3><span>{review[0].reviewedBy}</span>
+
+        <h3>Comments:</h3>
       </div>
     </Fragment>
   )
@@ -32,11 +41,11 @@ SingleReview.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  review: state.review
+  review: state.reviews
 })
 
 // export default SingleReview
-export default connect(mapStateToProps, { singleReview })(SingleReview)
+export default connect(mapStateToProps, { getReview })(SingleReview)
 // export default connect(mapStateToProps, { getLocation, allReviews })(SingleLocation);
 // 5f088d1e8ce7926ef81bca54
 

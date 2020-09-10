@@ -14,7 +14,7 @@ const ReviewSummary = ({ review }) => {
 
         <h4>{review.rating}</h4>
         <strong>{review.review}</strong>
-        <Link to={"review/view/" + review._id} review={review}>See More</Link>
+        <Link to={"/review/view/" + review._id} review={review}>See More</Link>
 
       </div>
     </Fragment>

@@ -19,7 +19,7 @@ export const allReviews = (id) => async (dispatch) => {
   }
 }
 
-export const singleReview = (id) => async (dispatch) => {
+export const getReview = (id) => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
