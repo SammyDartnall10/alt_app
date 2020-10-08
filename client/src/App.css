@@ -4,9 +4,13 @@ Purple: #ce00ff
 Green: #00ffce
 */
 
-body {
-  /* background-color: #ffce00; */
+/* body {
+  background-color: #ffce00;
   opacity: 90%;
+} */
+
+section.container {
+  margin-bottom: 100px;
 }
 
 a {
