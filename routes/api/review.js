@@ -18,7 +18,7 @@ const router = express.Router();
 // @route   POST api/review/:id
 // @desc    Post a review for a location
 // @access  Private
-router.post("/:id", auth, async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   const {
     review,
     rating,

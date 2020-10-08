@@ -39,5 +39,15 @@ export const getReview = (id) => async (dispatch) => {
 }
 
 export const createEditReview = (id) => async (dispatch) => {
-
+  try {
+    const res = await axios.post(`/api/review/${id}`)
+    dispatch({
+      type: SINGLE_REVIEW,
+      payload: res.data
+    })
+  } catch {
+    dispatch({
+      type: REVIEW_ERROR,
+    });
+  }
 }

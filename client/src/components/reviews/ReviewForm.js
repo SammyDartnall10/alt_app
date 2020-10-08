@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
-import { createEditReview } from '../../actions/reviews/createEditReview'
+import React, { useState, useEffect } from 'react'
+import { createEditReview, getReview } from '../../actions/reviews'
+
 import { connect } from "react-redux";
 
-const ReviewForm = ({ createEditReview, loc }) => {
+const ReviewForm = ({ createEditReview, getReview, loc, match }) => {
+  // trying a use effect instead? Might pull it through to the. Should be pass from previous component though
+  useEffect(() => {
+    getReview(match.params.id)
+  }, [getReview])
 
   const [formData, setFormData] = useState({
     reviewDetail: "",
@@ -53,7 +58,7 @@ const ReviewForm = ({ createEditReview, loc }) => {
   )
 }
 
-export default connect(null, { createEditReview })(ReviewForm)
+export default connect(null, { createEditReview, getReview })(ReviewForm)
 
 
 

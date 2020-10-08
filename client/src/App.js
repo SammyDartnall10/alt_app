@@ -50,7 +50,7 @@ const App = () => {
               <Route exact path="/alllocations" component={Locations} />
               <Route exact path="/location/:id" component={SingleLocation} />
               <Route exact path="/review/view/:id" component={SingleReview} />
-              <Route exact path="/review/add/:id" component={ReviewForm}></Route>
+              <Route exact path="/review/:id" component={ReviewForm}></Route>
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/me" component={UserProfile} />
               <PrivateRoute

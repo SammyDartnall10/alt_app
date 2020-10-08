@@ -38,7 +38,7 @@ const SingleLocation = ({ getLocation, allReviews, location: { location }, revie
           {/* <PreferencesDisplay prefs={location}></PreferencesDisplay> */}
           <div className="row">
             <div className="col">
-              <Link to={"/review/add/"+location._id} loc={location}>
+              <Link to={"/review/"+location._id} loc={location}>
               <button>Add Review</button>
               </Link>
             </div>
