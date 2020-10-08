@@ -8,10 +8,14 @@ const Landing = () => {
     <Fragment>
       <Link to="/login">
         <div className="first-logo">
-          <h1 className="title-landing">ALt_</h1>
-          <h1 className="title-landing">Work</h1>
+          <h1 className="title-landing alt-top">ALt_</h1>
+          <h1 className="title-landing work-bottom">Work</h1>
+          <div>
+            <button className="enter-button">Let's Go!!</button>
+          </div>
           {/* <i class="fas fa-sign-in-alt get-in"></i> */}
         </div>
+
       </Link>
 
       {/* <div className="first-logo">
